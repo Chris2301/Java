@@ -1,4 +1,4 @@
-package nl.kick.javaspringapi.controller;
+package nl.kick.javaspringapi.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

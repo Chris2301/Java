@@ -3,16 +3,17 @@ package nl.kick.javaspringapi.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "office")
+@Table(name = "office", schema = "hotel")
 public class Office {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "office_id_generator")
+    @SequenceGenerator(name = "office_id_generator", sequenceName = "hotel.office_id_seq")
     private Long id;
     @Column
     private String name;
 
-    @Column
+    @Column(name = "employee_amount")
     private int employeeAmount;
 
     public Office(final Long id, final String name, final int employeeAmount) {

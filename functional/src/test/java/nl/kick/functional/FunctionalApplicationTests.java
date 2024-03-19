@@ -1,12 +1,10 @@
-package nl.kick.javaspringapi;
+package nl.kick.functional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
-@ActiveProfiles("test")
-class JavaSpringApiApplicationTests {
+class FunctionalApplicationTests {
 
     @Test
     void contextLoads() {

@@ -2,8 +2,8 @@ package nl.kick.javaspringapi;
 
 import io.zonky.test.db.postgres.embedded.EmbeddedPostgres;
 import jakarta.annotation.PreDestroy;
+import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AbstractDependsOnBeanFactoryPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -35,30 +35,20 @@ class ItDbConfig {
         return embeddedDatabase.getDataSource();
     }
 
-//    /**
-//     * Make sure to run Liquibase migrations after having created the DataSource.
-//     *
-//     * @param dataSource the JDBC {@link DataSource}.
-//     * @return a {@link SpringLiquibase} object.
-//     */
-//    @Bean("liquibase")
-//    public SpringLiquibase liquibase(final DataSource dataSource) {
-//        final SpringLiquibase springLiquibase = new SpringLiquibase();
-//        springLiquibase.setDataSource(dataSource);
-//        springLiquibase.setContexts("junit");
-//        springLiquibase.setChangeLog("classpath:/changelogs/changelog.xml");
-//        return springLiquibase;
-//    }
-
-//    /**
-//     * Declare a dependency on liquibase for our 'standard' DatabasePatchLevelChecker, to ensure an ordered startup.
-//     */
-//    @Configuration
-//    protected static class DatabasePatchLevelCheckerLiquibaseDependencyConfiguration extends AbstractDependsOnBeanFactoryPostProcessor {
-//        public DatabasePatchLevelCheckerLiquibaseDependencyConfiguration() {
-//            super(DatabasePatchLevelChecker.class, "liquibase");
-//        }
-//    }
+    /**
+     * Make sure to run Liquibase migrations after having created the DataSource.
+     *
+     * @param dataSource the JDBC {@link DataSource}.
+     * @return a {@link SpringLiquibase} object.
+     */
+    @Bean("liquibase")
+    public SpringLiquibase liquibase(final DataSource dataSource) {
+        final SpringLiquibase springLiquibase = new SpringLiquibase();
+        springLiquibase.setDataSource(dataSource);
+        springLiquibase.setContexts("junit");
+        springLiquibase.setChangeLog("classpath:/changelogs/changelog.xml");
+        return springLiquibase;
+    }
 
 
     /**

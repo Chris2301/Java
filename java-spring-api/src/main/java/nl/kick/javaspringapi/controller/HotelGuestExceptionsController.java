@@ -3,10 +3,9 @@ package nl.kick.javaspringapi.controller;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * Rest API testing Exceptions inside a API.
+ * Rest API testing Exceptions inside an API with MockMvC.
  *
- * This looks straightforward but out of the box, Exception testing to now work with MockMVC.
- * A ExceptionHandler is necessary as explained in the test.
+ * A (Global) ExceptionHandler is necessary as explained in the test.
  */
 @RestController
 @RequestMapping("rest/hotelguest/")
