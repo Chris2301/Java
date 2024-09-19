@@ -1,0 +1,60 @@
+openapi: 3.0.1
+info:
+  title: inteface-example
+  description: inteface-example
+  version: 0.0.1
+
+paths:
+  /api/v1/user/{naam}:
+    get:
+      summary: Geeft lijst terug met namen van alle gebruikers in de database met bepaalde naam
+      operationId: getUser
+      description: >-
+        Vraag gebruiker gegevens op doormiddel van naam
+      tags:
+        - user
+      parameters:
+        - name: naam
+          in: path
+          required: true
+          description: >-
+            "Naam van gebruiker"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: NOT FOUND, wanneer geen aanvraag wordt gevonden voor ID
+
+components:
+  schemas:
+    User:
+      description: >-
+        De User
+      type: object
+      properties:
+        naam:
+          type: string
+          minLength: 0
+          maxLength: 25
+        age:
+          type: integer
+          minimum: 0
+          maximum: 120
+        sane:
+          type: boolean
+        gender:
+          $ref: '#/components/schemas/Gender'
+
+    Gender:
+      description: Geslacht van de gebruiker
+      type: string
+      enum:
+        - Man
+        - Vrouw
+        - Anders

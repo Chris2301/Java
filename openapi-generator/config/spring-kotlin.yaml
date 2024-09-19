@@ -1,0 +1,17 @@
+generatorName: kotlin-spring
+inputSpec: ./specification/openapi.yaml
+outputDir: ./implementation-kotlin
+additionalProperties:
+  modelPackage: nl.model
+  apiPackage: nl.api
+  sourceFolder: src/main/kotlin
+  library: spring-cloud
+  useSpringBoot3: true
+  useTags: true
+  interfaceOnly: true
+  skipDefaultInterface: true
+  enumPropertyNaming: UPPERCASE
+  exceptionHandler: false
+
+typeMappings:
+  java.time.OffsetDateTime: java.time.Instant

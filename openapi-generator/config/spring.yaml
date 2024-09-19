@@ -1,0 +1,20 @@
+generatorName: spring
+inputSpec: ./specification/openapi.yaml
+outputDir: ./implementation-java
+additionalProperties:
+  groupId: nl
+  artifactId: implementation-java
+  modelPackage: nl.model
+  apiPackage: nl.api
+  sourceFolder: src/main/java
+  templateDir: ./templates
+  library: spring-cloud
+  useSpringBoot3: true
+  useTags: true
+  interfaceOnly: true
+  skipDefaultInterface: true
+  useOptional: true
+  bigDecimalAsString: true
+
+typeMappings:
+  OffsetDateTime: java.time.Instant

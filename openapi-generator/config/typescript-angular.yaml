@@ -1,0 +1,11 @@
+generatorName: typescript-angular
+inputSpec: ./specification/openapi.yaml
+outputDir: ./implementation-typescript
+additionalProperties:
+  enumPropertyNaming: UPPERCASE
+  npmName: "@nl/typescript-interface-v1"
+  npmRepository: https://nexus.cisvm.intranet.rws.nl/repository/npmjs-private/
+  supportsES6: true
+  snapshot: false
+  fileNaming: "kebab-case"
+  removeEnumValuePrefix: false
